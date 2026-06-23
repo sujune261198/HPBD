@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap&subset=vietnamese" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="locked">
+  <section id="passwordGate" class="password-gate">
+    <canvas id="gateSparkCanvas"></canvas>
+    <div class="gate-vignette"></div>
+    <div class="gate-card">
+      <div class="gate-seal">❤</div>
+      <p class="gate-eyebrow">MỘT MÓN QUÀ NHỎ DÀNH RIÊNG CHO VỢ IUUU CỤA A</p>
+      <h1>Trước khi mở thư...</h1>
+      <p class="gate-question">Câu hỏi bí mật:<br><b>Ngày kỷ niệm của chúng mình là ngày nào?</b></p>
+      <input id="passwordInput" type="password" inputmode="numeric" maxlength="8" placeholder="Nhập mật khẩu..." autocomplete="off">
+      <button onclick="checkPassword()">Mở thư ❤️</button>
+      <p id="passwordError" class="password-error"></p>
+      <p class="gate-hint">Gợi ý: ngày kỷ niệm của hai đứa mình.</p>
+    </div>
+  </section>
+
+  <audio id="bgMusic" src="assets/music.mp3" loop></audio>
+
+  <main class="story">
+    <section class="scene hero active first-dashboard">
+      <div class="first-page-photo-decor">
+        <img class="fp-img fp1" src="assets/1%20%2826%29.webp" alt="">
+        <img class="fp-img fp2" src="assets/1%20%2829%29.webp" alt="">
+        <img class="fp-img fp3" src="assets/1%20%2830%29.webp" alt="">
+        <img class="fp-img fp4" src="assets/1%20%288%29.webp" alt="">
+        <img class="fp-img fp5" src="assets/1750864343802.webp" alt="">
+        <img class="fp-img fp6" src="assets/photo%20%281%29.webp" alt="">
+      </div>
+
+
+      
+      <canvas id="firstSparkCanvas"></canvas>
+      <div class="first-petals"></div>
+      <div class="first-vignette"></div>
+      <div class="magic-bg"></div>
+
+      
+
+      <div class="first-layout">
+        <section class="first-copy">
+          <p class="eyebrow">DÀNH TẶNG CHO CÔ GÁI CỦA ANH</p>
+          <h1>Happy Birthday<br><em>vợ iuuu</em><span>♡</span></h1>
+          <p class="hero-text">Cảm ơn em vì đã xuất hiện trong cuộc đời anh,<br>để mỗi ngày của anh đều trở nên ý nghĩa hơn.</p>
+          <button class="primary" onclick="startStory()">✉ Mở câu chuyện</button>
+        </section>
+
+        <section class="first-envelope-stage">
+          <div class="first-glow-ring"></div>
+          <div class="first-rose first-rose-1">🌹</div>
+          <div class="first-rose first-rose-2">🌸</div>
+          <button class="first-envelope" onclick="startStory()" aria-label="Mở thư">
+            <div class="first-flap"></div>
+            <div class="first-seal">❤</div>
+            <span>For my love</span>
+          </button>
+        </section>
+
+        <aside class="first-quote-card">
+          <b>“</b>
+          <p>"Anh không cần cả thế giới, "<br>Anh chỉ cần một góc nhỏ,<br>miễn là có em ở đó.</p>
+          <b>”</b>
+        </aside>
+      </div>
+
+      <div class="first-mini-grid">
+        <article><b>27/11/2024</b><span>Ngày anh có "danh phận" ^^</span></article>
+        <article><b>Album</b><span>Những kỷ niệm của hai đứa</span></article>
+        <article><b>27s</b><span>Món quà cuối cùng</span></article>
+      </div>
+    </section>
+
+    <section class="scene story-prologue">
+<div class="page-photo-decor decor-3">
+<img class="decor-img d1" src="assets/photo%20%2811%29.webp">
+<img class="decor-img d2" src="assets/1%20%2830%29.webp">
+<img class="decor-img d3" src="assets/photo%20%281%29_1.webp">
+</div>
+      
+      <div class="magic-bg"></div>
+      <h2>Hì hì...</h2>
+      <p class="typewriter" data-text="Anh đã từng viết rất nhiều dòng để nói hết những điều trong lòng mình. Nhưng lần này, anh muốn biến nó thành một câu chuyện nhỏ — câu chuyện của anh và ...em."></p>
+    </section>
+
+    <section class="scene memory">
+<div class="page-photo-decor decor-4">
+<img class="decor-img d1" src="assets/photo%20%282%29_2.webp">
+<img class="decor-img d2" src="assets/photo%20%285%29.webp">
+<img class="decor-img d3" src="assets/photo%20%286%29.webp">
+</div>
+      
+      <div class="magic-bg"></div>
+      <h2>Album nhỏ nhỏ của chúng mik 📸</h2>
+      <p class="caption"></p>
+
+      <div class="memory-desk"></div>
+      <div class="desk-props">
+        <span class="ticket">OUR MEMORIES</span>
+        <span class="note">happy birthday</span>
+        <span class="flower">🌷</span>
+      </div>
+      <div class="messy-album">
+        <button class="polaroid p1" onclick="openPhoto('assets/photo%20%2814%29.webp','Kỷ niệm đầu tiên anh muốn giữ lại ❤️')">
+          <img src="assets/photo%20%2814%29.webp" onerror="this.parentElement.querySelector('span').innerText='Ảnh 1'"><span></span>
+        </button>
+        <button class="polaroid p2" onclick="openPhoto('assets/photo%20%289%29.webp','Một khoảnh khắc rất bình thường nhưng anh rất thích ✨')">
+          <img src="assets/photo%20%289%29.webp" onerror="this.parentElement.querySelector('span').innerText='Ảnh 2'"><span></span>
+        </button>
+        <button class="polaroid p3" onclick="openPhoto('assets/photo%20%287%29.webp','Có em nên mọi thứ đáng nhớ hơn 🌷')">
+          <img src="assets/photo%20%287%29.webp" onerror="this.parentElement.querySelector('span').innerText='Ảnh 3'"><span></span>
+        </button>
+        <button class="polaroid p4" onclick="openPhoto('assets/photo%20%282%29_1.webp','Mong sau này mình có thêm thật nhiều ảnh như thế này 🫶')">
+          <img src="assets/photo%20%282%29_1.webp" onerror="this.parentElement.querySelector('span').innerText='Ảnh 4'"><span></span>
+        </button>
+        <button class="polaroid p5" onclick="openPhoto('assets/photo%20%288%29.webp','Một phần nhỏ trong câu chuyện của hai đứa mình 💕')">
+          <img src="assets/photo%20%288%29.webp" onerror="this.parentElement.querySelector('span').innerText='Ảnh 5'"><span></span>
+        </button>
+        <button class="polaroid p6" onclick="openPhoto('assets/photo%20%2811%29.webp','Cảm ơn em vì đã xuất hiện trong cuộc sống của anh 🎁')">
+          <img src="assets/photo%20%2811%29.webp" onerror="this.parentElement.querySelector('span').innerText='Ảnh 6'"><span></span>
+        </button>
+      </div>
+    
+      <div class="album-happy-photo">
+        <img src="assets/photo%20%2811%29.webp" alt="">
+      </div>
+</section>
+
+    <section class="scene memory-intro-scene">
+<div class="page-photo-decor decor-1">
+<img class="decor-img d1" src="assets/photo%20%2810%29.webp">
+<img class="decor-img d2" src="assets/photo%20%289%29.webp">
+<img class="decor-img d3" src="assets/1750864343802.webp">
+</div>
+      
+      <div class="magic-bg"></div>
+      <div class="memory-bg-photos">
+        <img src="assets/photo%20%2814%29.webp" alt=""><img src="assets/photo%20%289%29.webp" alt=""><img src="assets/photo%20%287%29.webp" alt="">
+        <img src="assets/photo%20%282%29_1.webp" alt=""><img src="assets/photo%20%288%29.webp" alt=""><img src="assets/photo%20%2811%29.webp" alt="">
+      </div>
+      <h2>Những điều anh nhớ</h2>
+      <p class="caption memory-intro">Không phải những điều quá lớn lao. Chỉ là những chi tiết nhỏ mà anh vẫn luôn giữ trong lòng.</p>
+      <button class="primary" onclick="nextScene()">Đi qua từng ký ức ❤️</button>
+    </section>
+
+    <section class="scene memory-page flower-page">
+<div class="page-photo-decor decor-2">
+<img class="decor-img d1" src="assets/photo%20%282%29_1.webp">
+<img class="decor-img d2" src="assets/photo%20%284%29.webp">
+<img class="decor-img d3" src="assets/photo%20%282%29.webp">
+</div>
+      
+      <div class="petal-layer"></div>
+      <div class="magic-bg"></div>
+      <div class="single-memory-bg"><img src="assets/photo%20%2814%29.webp" alt=""></div>
+      <div class="memory-story-card">
+        <span>🌷</span>
+        <h2>Những ngày đầu</h2>
+        <p>Ngày đó, em còn là cô gái anh chỉ biết để ý từ xa. Anh thích nụ cười của em, thích cái cách em làm "lơ", chẳng sượng tí nào ý :3, dù khi gặp nhau ở công ty, em vẫn làm như chẳng thấy.</p>
+      </div>
+    </section>
+
+    <section class="scene memory-page warm-page">
+<div class="page-photo-decor decor-3">
+<img class="decor-img d1" src="assets/photo%20%281%29_2.webp">
+<img class="decor-img d2" src="assets/photo%20%283%29.webp">
+<img class="decor-img d3" src="assets/photo%20%281%29.webp">
+</div>
+      
+      <div class="gold-light-layer"></div>
+      <div class="magic-bg"></div>
+      <div class="single-memory-bg"><img src="assets/photo%20%289%29.webp" alt=""></div>
+      <div class="memory-story-card">
+        <span>🎮</span>
+        <h2>Từ những sở thích chung mà gần nhau hơn</h2>
+        <p>Anh không nghĩ có ngày một trò chơi lại trở thành cái cớ để hai đứa nói chuyện nhiều hơn. Từ vài tin nhắn trong game, rồi đến công việc, rồi đến những câu chuyện linh tinh chẳng đầu chẳng cuối.</p>
+      </div>
+    </section>
+
+    <section class="scene memory-page laugh-page">
+<div class="page-photo-decor decor-4">
+<img class="decor-img d1" src="assets/photo%20%287%29.webp">
+<img class="decor-img d2" src="assets/1%20%288%29.webp">
+<img class="decor-img d3" src="assets/photo%20%2811%29.webp">
+</div>
+      
+      <div class="tiny-heart-layer"></div>
+      <div class="magic-bg"></div>
+      <div class="single-memory-bg"><img src="assets/photo%20%287%29.webp" alt=""></div>
+      <div class="memory-story-card">
+        <span>😂</span>
+        <h2>Anh nhớ cách em nói chuyện</h2>
+        <p>Anh nhớ mấy câu rất “em”: lúc thì bảo mình hay khuyên người khác, lúc thì tự nhận hơi ác một tí, lúc lại cười như không có chuyện gì. Chính những câu chuyện bình thường đó làm anh thấy em đáng yêu hơn mỗi ngày.</p>
+      </div>
+    </section>
+
+    <section class="scene memory-page simple-page">
+<div class="page-photo-decor decor-1">
+<img class="decor-img d1" src="assets/photo%20%2813%29.webp">
+<img class="decor-img d2" src="assets/photo%20%2814%29.webp">
+<img class="decor-img d3" src="assets/1%20%2829%29.webp">
+</div>
+      
+      <div class="magic-bg"></div>
+      <div class="single-memory-bg"><img src="assets/photo%20%282%29_1.webp" alt=""></div>
+      <div class="memory-story-card">
+        <span>📱</span>
+        <h2>Những lần anh chờ tin nhắn</h2>
+        <p>Có những lúc anh cứ cầm điện thoại lên rồi lại đặt xuống. Chỉ một tiếng thông báo thôi cũng làm anh hy vọng đó là em. Nghe hơi ngốc, nhưng đó là cảm giác rất thật của anh.</p>
+      </div>
+    </section>
+
+    <section class="scene memory-page thanks-page">
+<div class="page-photo-decor decor-2">
+<img class="decor-img d1" src="assets/photo%20%288%29.webp">
+<img class="decor-img d2" src="assets/1%20%2826%29.webp">
+<img class="decor-img d3" src="assets/photo%20%2811%29.webp">
+</div>
+      
+      <div class="gold-dust-layer"></div>
+      <div class="magic-bg"></div>
+      <div class="single-memory-bg"><img src="assets/photo%20%288%29.webp" alt=""></div>
+      <div class="memory-story-card">
+        <span>27/11</span>
+        <h2>Ngày chúng mình chính thức "là của nhau"</h2>
+        <p>27/11/2024 — từ hôm đó, mối tình này không còn là đơn phương nữa, anh không còn bước một mình nữa. Chúng mình đã cùng nhau viết nên những trang đầu tiên của câu chuyện mang tên "chúng ta"..</p>
+      </div>
+    </section>
+
+    <section class="scene memory-page future-page">
+<div class="page-photo-decor decor-3">
+<img class="decor-img d1" src="assets/1%20%2830%29.webp">
+<img class="decor-img d2" src="assets/photo%20%281%29_1.webp">
+<img class="decor-img d3" src="assets/photo%20%282%29_2.webp">
+</div>
+      
+      <div class="shooting-star-layer"></div>
+      <div class="magic-bg"></div>
+      <div class="single-memory-bg multi"><img src="assets/photo%20%2811%29.webp" alt=""></div>
+      <div class="memory-story-card">
+        <span>✨</span>
+        <h2>Bây giờ và sau này</h2>
+        <p>Bây giờ chúng mình đang rất yêu nhau. Và anh mong sau này, mỗi khi nhìn lại sinh nhật này, em sẽ nhớ rằng có một người đã cố gắng chuẩn bị mọi thứ thật đặc biệt dành cho riêng em.</p>
+      </div>
+    </section>
+
+    <section class="scene memory-page love-detail-page">
+<div class="page-photo-decor decor-4">
+<img class="decor-img d1" src="assets/photo%20%285%29.webp">
+<img class="decor-img d2" src="assets/photo%20%286%29.webp">
+<img class="decor-img d3" src="assets/photo%20%2810%29.webp">
+</div>
+      
+      <div class="tiny-heart-layer"></div>
+      <div class="magic-bg"></div>
+      <div class="single-memory-bg"><img src="assets/photo%20%2814%29.webp" alt=""></div>
+      <div class="memory-story-card">
+        <span>💗</span>
+        <h2>Đôi lời anh muốn nói</h2>
+        <p>Anh không phải người giỏi nói lời ngọt ngào. Nhưng anh sẽ yêu em 1 cách chân thành nhất, đôi khi có hơi vụng về nhưng đó là những gì thật nhất bên trong anh.</p>
+      </div>
+    </section>
+
+    <section class="scene letter">
+<div class="page-photo-decor decor-1">
+<img class="decor-img d1" src="assets/photo%20%289%29.webp">
+<img class="decor-img d2" src="assets/1750864343802.webp">
+<img class="decor-img d3" src="assets/photo%20%282%29_1.webp">
+</div>
+      
+      <div class="magic-bg"></div>
+      <h2>HAPPY BIRTHDAY 💌</h2>
+      <p>
+        HiuHiu,<br><br>
+        Trước đây anh từng mất rất nhiều ngày để viết một lá thư thật dài cho em. Khi đó, anh chỉ muốn em hiểu rằng tình cảm của anh là thật, dù anh không giỏi nói ra bằng lời.<br><br>
+        Bây giờ, khi chúng mình đã yêu nhau, anh vẫn muốn giữ sự chân thành đó. Anh không muốn tặng em một món quà qua loa. Anh muốn sinh nhật này có một thứ gì đó thật riêng, thật giống câu chuyện của hai đứa mình.<br><br>
+        Cảm ơn em vì đã yêu anh, vì đã ở bên anh.
+      </p>
+    </section>
+
+    
+
+
+    <section class="scene gift video-gift-scene">
+      <div class="magic-bg"></div>
+      <h2>Điều anh muốn tự nói với em 🎥</h2>
+      <p>ChiuChiu, nhớ xem hết nhó....</p>
+
+      <div class="birthday-video-box">
+        <video id="birthdayVideo" controls playsinline preload="metadata">
+          <source src="assets/VIDEO.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <button id="unlockGiftBtn" class="primary gift-after-video" style="display:none" onclick="nextScene()">
+        Còn 1 món quà nhỏ xíu 🎁
+      </button>
+    </section>
+
+    <section class="scene gift">
+      <div class="magic-bg"></div>
+      <h2>Món quà cuối cùng 🎁</h2>
+      <div id="qrBox" class="qr-box final-gift-box">
+        <p>Bấm nút bên dưới để mở quà nhé ❤️</p>
+      </div>
+      <button class="primary" onclick="showGift(event)">Mở quà 🎁</button>
+    </section>
+  </main>
+
+  <div class="photo-modal" id="photoModal" onclick="closePhoto(event)">
+    <canvas id="fireworks"></canvas>
+    <div class="modal-card">
+      <button class="close" onclick="closePhoto()">×</button>
+      <img id="modalImg" src="" alt="Ảnh kỷ niệm">
+      <p id="modalText"></p>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button onclick="prevScene()">‹</button>
+    <button onclick="nextScene()">›</button>
+  </div>
+
+  <canvas id="confetti"></canvas>
+  <script src="script.js"></script>
+</body>
+</html>
