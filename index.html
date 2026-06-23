@@ -106,7 +106,6 @@
       <div class="memory-desk"></div>
       <div class="desk-props">
         <span class="ticket">OUR MEMORIES</span>
-        <span class="note">happy birthday</span>
         <span class="flower">🌷</span>
       </div>
       <div class="messy-album">
@@ -149,7 +148,7 @@
       </div>
       <h2>Những điều anh nhớ</h2>
       <p class="caption memory-intro">Không phải những điều quá lớn lao. Chỉ là những chi tiết nhỏ mà anh vẫn luôn giữ trong lòng.</p>
-      <button class="primary" onclick="nextScene()">Đi qua từng ký ức ❤️</button>
+      <button class="primary" onclick="nextScene(event)">Đi qua từng ký ức ❤️</button>
     </section>
 
     <section class="scene memory-page flower-page">
@@ -165,7 +164,7 @@
       <div class="memory-story-card">
         <span>🌷</span>
         <h2>Những ngày đầu</h2>
-        <p>Ngày đó, em còn là cô gái anh chỉ biết để ý từ xa. Anh thích nụ cười của em, thích cái cách em làm "lơ", chẳng sượng tí nào ý :3, dù khi gặp nhau ở công ty, em vẫn làm như chẳng thấy.</p>
+        <p>Ngày đó, em còn là cô gái anh chỉ biết để ý từ xa. Anh thích nụ cười của em, thích cái cách em làm "lơ", chẳng sượng tí nào ý :3, dù khi gặp nhau ở công ty, em vẫn vờ như chẳng thấy.</p>
       </div>
     </section>
 
@@ -182,7 +181,7 @@
       <div class="memory-story-card">
         <span>🎮</span>
         <h2>Từ những sở thích chung mà gần nhau hơn</h2>
-        <p>Anh không nghĩ có ngày một trò chơi lại trở thành cái cớ để hai đứa nói chuyện nhiều hơn. Từ vài tin nhắn trong game, rồi đến công việc, rồi đến những câu chuyện linh tinh chẳng đầu chẳng cuối.</p>
+        <p>Đôi khi không biết nói gì, một trò chơi lại trở thành cái cớ để hai đứa nói chuyện nhiều hơn. Từ vài tin nhắn trong game, rồi đến công việc, rồi đến những câu chuyện linh tinh chẳng đầu chẳng cuối.</p>
       </div>
     </section>
 
@@ -301,18 +300,18 @@
         </video>
       </div>
 
-      <button id="unlockGiftBtn" class="primary gift-after-video" style="display:none" onclick="nextScene()">
+      <button id="unlockGiftBtn" class="primary gift-after-video" style="display:none" onclick="nextScene(event)">
         Còn 1 món quà nhỏ xíu 🎁
       </button>
       <br><i> xem hết thì bấm nút này nhó 👆 ^^ -.-</i>
     </section>
-    <section class="scene gift">
+    <section id="finalGiftScene" class="scene gift">
       <div class="magic-bg"></div>
       <h2>Món quà cuối cùng 🎁</h2>
       <div id="qrBox" class="qr-box final-gift-box">
         <p>Bấm nút bên dưới để mở quà nhé ❤️</p>
       </div>
-      <button class="primary" onclick="showGift(event)">Mở quà 🎁</button>
+      <button id="openFinalGiftBtn" class="primary" data-final-gift-btn="1" onclick="showGift(event)">Mở quà 🎁</button>
     </section>
   </main>
 
@@ -326,8 +325,8 @@
   </div>
 
   <div class="controls">
-    <button onclick="prevScene()">‹</button>
-    <button onclick="nextScene()">›</button>
+    <button onclick="prevScene(event)">‹</button>
+    <button onclick="nextScene(event)">›</button>
   </div>
 
   <canvas id="confetti"></canvas>

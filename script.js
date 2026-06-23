@@ -139,11 +139,23 @@ function startStory(){
   nextScene();
 }
 
+function getActiveSceneIndex(){
+  const idx = scenes.findIndex(scene => scene.classList.contains('active'));
+  return idx >= 0 ? idx : current;
+}
+
+function stopUiEvent(event){
+  if(!event) return;
+  event.preventDefault?.();
+  event.stopPropagation?.();
+}
+
 function showScene(i){
-  const oldVideo = scenes[current].querySelector('video');
+  const activeIndex = getActiveSceneIndex();
+  const oldVideo = scenes[activeIndex]?.querySelector('video');
   if(oldVideo) oldVideo.pause();
 
-  scenes[current].classList.remove('active');
+  scenes.forEach(scene => scene.classList.remove('active'));
   current = (i + scenes.length) % scenes.length;
   scenes[current].classList.add('active');
 
@@ -158,8 +170,14 @@ function showScene(i){
   prepareVideoGiftUnlock();
 }
 
-function nextScene(){ showScene(current + 1); }
-function prevScene(){ showScene(current - 1); }
+function nextScene(event){
+  stopUiEvent(event);
+  showScene(getActiveSceneIndex() + 1);
+}
+function prevScene(event){
+  stopUiEvent(event);
+  showScene(getActiveSceneIndex() - 1);
+}
 
 document.addEventListener('keydown', e => {
   if(e.key === 'ArrowRight') nextScene();
@@ -200,15 +218,21 @@ function notifyTelegram(){
 
 
 function showGift(event){
+  stopUiEvent(event);
   if(event && event.isTrusted === false) return;
+
+  const finalGiftScene = document.getElementById("finalGiftScene");
+  const clickedButton = event?.currentTarget;
+
+  // Chỉ nút Mở quà thật ở trang cuối mới được kích hoạt mở quà.
+  // Các nút khác như Play video, Đi qua từng ký ức, mũi tên chuyển trang... sẽ không thể gọi nhầm.
+  if(!finalGiftScene?.classList.contains("active")) return;
+  if(!clickedButton?.matches?.("[data-final-gift-btn]")) return;
   if(finalGiftOpened) return;
   finalGiftOpened = true;
 
-  const clickedButton = event?.currentTarget || event?.target;
-  if(clickedButton){
-    clickedButton.disabled = true;
-    clickedButton.style.display = "none";
-  }
+  clickedButton.disabled = true;
+  clickedButton.style.display = "none";
 
   notifyTelegram();
   burstConfetti();
@@ -227,7 +251,7 @@ function showGift(event){
   box.classList.add("gift-loading","cinema-countdown");
   box.innerHTML = `
     <h3>🎁 Món quà đang được gửi đến em...</h3><div class="heartbeat">❤️</div>
-    <p id="countMessage">Anh hơi hồi hộp...</p>
+    <p id="countMessage">Đếm cùng a nhó...</p>
     <div class="countdown">${seconds}</div>
   `;
   box.style.display = "block";
@@ -258,6 +282,7 @@ function showGift(event){
         <p class="final-line two">Cảm ơn em vì đã yêu anh.</p>
         <p class="final-line three">Anh mong tuổi mới của vợ luôn vui vẻ, bình an, xinh đẹp và được yêu thương thật nhiều.</p>
         <p class="final-line four"><b>Anh yêu em.</b></p>
+<br>
         <p class="final-line five"></p><p class="small-note">Kiểm tra ...điện thoại của vợ nhé ❤️</p>
       `;
 }
@@ -396,9 +421,8 @@ function animateFireworks(){
 document.addEventListener('DOMContentLoaded',()=>{
  const btn=document.querySelector('.gift-after-video');
  if(btn){
-   btn.addEventListener('click',()=>{
-     const countdown=document.querySelector('.countdown')?.closest('section');
-     if(countdown){ setTimeout(()=>countdown.scrollIntoView({behavior:'smooth'}),150);}
+   btn.addEventListener('click',(e)=>{
+     e.stopPropagation();
    });
  }
 });
@@ -421,4 +445,14 @@ function prepareVideoGiftUnlock(){
 
 document.addEventListener('DOMContentLoaded',()=>{
   prepareVideoGiftUnlock();
+});
+
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const video=document.getElementById('birthdayVideo');
+  if(video){
+    ['click','touchstart','touchend'].forEach(evt=>{
+      video.addEventListener(evt,e=>e.stopPropagation(), true);
+    });
+  }
 });
